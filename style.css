@@ -104,24 +104,56 @@ a:hover, a:focus {
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 1001;
   background: transparent;
   border: none;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 30px;
-  height: 21px;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
 }
 
 .menu-toggle span {
   width: 100%;
-  height: 3px;
+  height: 2px;
   background-color: var(--neon-green);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  position: relative;
+  transform-origin: center;
+}
+
+.menu-toggle span {
   box-shadow: 0 0 5px var(--neon-green);
 }
 
+.menu-toggle:hover span {
+  box-shadow: 0 0 15px var(--neon-green);
+}
+
+/* Animação do botão quando o menu está aberto */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+  width: 100%;
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+  width: 100%;
+}
+
+/* Menu Overlay Styles */
 .menu-overlay {
   position: fixed;
   top: 0;
@@ -129,26 +161,22 @@ a:hover, a:focus {
   width: 100%;
   height: 100%;
   background: rgba(10, 10, 10, 0.95);
-  z-index: 999;
-  display: none;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  transform: scale(1.1);
 }
 
 .menu-overlay.active {
-  display: flex;
   opacity: 1;
+  visibility: visible;
+  transform: scale(1);
 }
 
 .menu-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 30px;
-  color: var(--neon-green);
-  background: none;
-  border: none;
-  text-shadow: 0 0 5px var(--neon-green);
+  display: none;
 }
 
 .menu-columns {
@@ -157,6 +185,7 @@ a:hover, a:focus {
   height: 100%;
 }
 
+/* Animação das colunas sociais */
 .menu-social-column {
   flex: 1;
   position: relative;
@@ -167,8 +196,30 @@ a:hover, a:focus {
   transition: background-color 0.3s ease;
 }
 
+.menu-overlay.active .menu-social-column {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Efeito hover mais sofisticado para as colunas sociais */
+.menu-social-column::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--neon-green);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
 .menu-social-column:hover {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-social-column:hover::after {
+  width: 100%;
 }
 
 .menu-social-column a {
@@ -204,14 +255,41 @@ a:hover, a:focus {
   align-items: flex-start;
 }
 
+/* Animação dos itens do menu */
 .menu-item {
-  font-size: 24px;
-  margin: 15px 0;
-  transition: transform 0.3s ease;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.3s ease;
+  transition-delay: calc(var(--item-index) * 0.1s);
+}
+
+.menu-overlay.active .menu-item {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Efeito hover mais sofisticado para os itens do menu */
+.menu-item {
   position: relative;
-  padding-left: 40px;
-  text-decoration: none;
+  font-size: 24px;
+  padding-left: 0;
+  margin-left: 40px;
+  transition: transform 0.3s ease;
   color: var(--text-color);
+}
+
+
+.menu-item::before {
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  width: 20px;
+  height: 2px;
+  background: var(--neon-green);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: right;
 }
 
 .menu-item:hover {
@@ -220,16 +298,8 @@ a:hover, a:focus {
   color: var(--neon-green);
 }
 
-.menu-item::before {
-  content: '👉';
-  position: absolute;
-  left: 0;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
 .menu-item:hover::before {
-  opacity: 1;
+  transform: scaleX(1);
 }
 
 .hero {
@@ -303,13 +373,6 @@ a:hover, a:focus {
   0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(-20deg); }
   75% { transform: rotate(20deg); }
-}
-
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
 }
 
 .hero-title {
@@ -396,27 +459,40 @@ a:hover, a:focus {
   display: none;
 }
 
-/* Seção principal */
+.melhores-projetos {
+  padding: 80px 0;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .project-card {
   position: relative;
   max-width: 800px;
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
   color: #fff;
-  font-family: "Poppins", sans-serif;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Imagem de fundo embaçada */
 .project-background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   z-index: -1;
 }
 
@@ -428,14 +504,12 @@ a:hover, a:focus {
   opacity: 0.6;
 }
 
-/* Conteúdo principal */
 .project-content {
-  text-align: center;
   position: relative;
   z-index: 1;
+  text-align: center;
 }
 
-/* Imagem principal */
 .project-image {
   width: 100%;
   max-height: 300px;
@@ -445,15 +519,13 @@ a:hover, a:focus {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Título */
 .project-title {
   font-size: 32px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #4caf50;
+  color: var(--neon-green);
 }
 
-/* Descrição */
 .project-description {
   font-size: 16px;
   line-height: 1.6;
@@ -461,28 +533,27 @@ a:hover, a:focus {
   color: #d4d4d4;
 }
 
-/* Tags de tecnologias usadas */
 .project-tech {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .tech-tag {
   background: rgba(255, 255, 255, 0.1);
-  color: #4caf50;
+  color: var(--neon-green);
   padding: 8px 12px;
   border-radius: 16px;
   font-size: 14px;
 }
 
-/* Botão de acesso */
 .project-link {
   display: inline-block;
   padding: 10px 20px;
-  background: #4caf50;
-  color: black;
+  background: var(--neon-green);
+  color: var(--bg-color);
   text-transform: uppercase;
   font-weight: bold;
   border-radius: 8px;
@@ -490,8 +561,93 @@ a:hover, a:focus {
 }
 
 .project-link:hover {
-  background: #45a049;
+  background: var(--highlight-color);
   transform: scale(1.05);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--neon-green);
+}
+
+.swiper-pagination-bullet {
+  background: var(--neon-green);
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--highlight-color);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  background-color: var(--bg-color);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid var(--neon-green);
+  width: 80%;
+  max-width: 800px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.close {
+  color: var(--neon-green);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--highlight-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#modal-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+#modal-title {
+  color: var(--neon-green);
+  margin-bottom: 10px;
+}
+
+#modal-description {
+  margin-bottom: 20px;
+}
+
+#modal-tech {
+  margin-bottom: 20px;
+}
+
+#modal-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background: var(--neon-green);
+  color: var(--bg-color);
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+#modal-link:hover {
+  background-color: var(--highlight-color);
 }
 
 .skills-grid {
@@ -505,73 +661,56 @@ a:hover, a:focus {
 
 .skill-item {
   background: var(--card-bg);
-  border: 2px solid var(--neon-green);
   border-radius: 10px;
   padding: 20px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .skill-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+}
+
+.skill-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: var(--neon-green);
 }
 
 .skill-name {
   font-size: 1.2rem;
-  color: var(--neon-green);
+  font-weight: bold;
 }
 
 .contact-form {
   max-width: 600px;
   margin: 0 auto;
-  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .contact-form input,
 .contact-form textarea {
-  width: 100%;
-  padding: 10px;
   margin-bottom: 20px;
-  background: var(--card-bg);
-  border: 1px solid var(--neon-green);
-  color: var(--text-color);
+  padding: 10px;
   border-radius: 5px;
+  border: 1px solid var(--neon-green);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
 }
 
 .contact-form textarea {
-  height: 150px;
-  resize: none;
-}
-
-.submit-button, .project-link {
-  background: var(--neon-green);
-  color: var(--bg-color);
-  border: none;
-  padding: 12px 24px;
-  border-radius: 4px;
-  font-family: var(--main-font);
-  font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  text-transform: uppercase;
-}
-
-.submit-button:hover, .project-link:hover {
-  background: var(--neon-green);
-  transform: translateY(-2px);
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
-  color: var(--bg-color);
+  min-height: 150px;
 }
 
 .submit-button {
   background: var(--neon-green);
   color: var(--bg-color);
-  border: none;
   padding: 10px 20px;
+  border: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .submit-button:hover {
@@ -579,9 +718,15 @@ a:hover, a:focus {
 }
 
 .footer {
-  background: var(--card-bg);
+  background: rgba(0, 0, 0, 0.8);
   padding: 40px 0;
   text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .footer-nav {
@@ -591,12 +736,12 @@ a:hover, a:focus {
 .footer-nav-link {
   margin: 0 10px;
   color: var(--text-color);
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-nav-link:hover {
   color: var(--neon-green);
-  text-decoration: none;
 }
 
 .footer-social {
@@ -604,8 +749,19 @@ a:hover, a:focus {
 }
 
 .footer-social-link {
-  font-size: 24px;
+  font-size: 1.5rem;
   margin: 0 10px;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.footer-social-link:hover {
+  color: var(--neon-green);
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .scroll-top {
@@ -618,17 +774,17 @@ a:hover, a:focus {
   height: 40px;
   border-radius: 50%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 20px;
-  transition: background-color 0.3s ease;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
   opacity: 0;
-  visibility: hidden;
+  transition: opacity 0.3s ease, background 0.3s ease;
+  border: none;
 }
 
 .scroll-top.visible {
   opacity: 1;
-  visibility: visible;
 }
 
 .scroll-top:hover {
@@ -650,9 +806,28 @@ a:hover, a:focus {
 
 .intro-text {
   font-family: 'ExoSpace', sans-serif;
-  font-size: 4rem;
-  color: var(--neon-green);
-  opacity: 0;
+  font-size: 48px;
+  fill: none;
+  stroke: var(--neon-green);
+  stroke-width: 2;
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: draw 3s linear forwards, glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 2px var(--neon-green)) drop-shadow(0 0 4px var(--neon-green));
+  }
+  to {
+    filter: drop-shadow(0 0 4px var(--neon-green)) drop-shadow(0 0 8px var(--neon-green));
+  }
 }
 
 @media (max-width: 768px) {
@@ -667,10 +842,6 @@ a:hover, a:focus {
     max-width: 100%;
   }
 
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
   .about-content {
     flex-direction: column;
   }
@@ -680,17 +851,12 @@ a:hover, a:focus {
     margin-bottom: 40px;
   }
 
-  .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  .timeline-item::before {
+    left: -40px;
   }
 
-  .project-content {
-    grid-template-columns: 1fr;
-  }
-
-  .projects-carousel {
-    height: auto;
-    min-height: 500px;
+  .modal-content {
+    width: 95%;
   }
 }
 
@@ -699,23 +865,15 @@ a:hover, a:focus {
     font-size: 2rem;
   }
 
+  .hero-description {
+    font-size: 1rem;
+  }
+
   .section-title {
     font-size: 2rem;
   }
 
-  .menu-item {
-    font-size: 20px;
+  .timeline-item::before {
+    left: -30px;
   }
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
 }

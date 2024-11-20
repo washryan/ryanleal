@@ -1,5 +1,93 @@
-$(document).ready(function() {
-  // Configuração do Particles.js
+document.addEventListener('DOMContentLoaded', () => {
+  // Intro Animation
+  const introAnimation = document.getElementById('intro-animation');
+  const introSvg = document.getElementById('intro-svg');
+
+  gsap.to(introSvg, {
+      opacity: 0,
+      duration: 1,
+      delay: 3,
+      onComplete: () => {
+          introAnimation.style.display = 'none';
+      }
+  });
+
+  // Menu Toggle Logic
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menuOverlay = document.querySelector('.menu-overlay');
+  const menuItems = document.querySelectorAll('.menu-item');
+  const menuSocialColumns = document.querySelectorAll('.menu-social-column');
+
+  // Adicionar índices para as animações escalonadas
+  menuItems.forEach((item, index) => {
+    item.style.setProperty('--item-index', index);
+  });
+
+  menuSocialColumns.forEach((column, index) => {
+    column.style.setProperty('--column-index', index);
+  });
+
+  // Função para alternar o menu
+  function toggleMenu() {
+    menuToggle.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
+  
+    // Controlar o scroll do body
+    if (menuOverlay.classList.contains('active')) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Event Listeners
+menuToggle.addEventListener('click', toggleMenu);
+
+// Fechar menu ao clicar em um item
+menuItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = e.target.getAttribute('href');
+        
+        // Adicionar animação de saída
+        menuOverlay.style.transition = 'all 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6)';
+        menuToggle.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        
+        // Esperar a animação terminar antes de rolar até a seção
+        setTimeout(() => {
+            document.querySelector(target).scrollIntoView({
+                behavior: 'smooth'
+            });
+            document.body.style.overflow = '';
+        }, 500);
+    });
+});
+
+// Fechar menu ao pressionar ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
+        toggleMenu();
+    }
+});
+
+// Adicionar efeito de hover com mouse
+menuToggle.addEventListener('mousemove', (e) => {
+    const bounds = menuToggle.getBoundingClientRect();
+    const mouseX = e.clientX - bounds.left;
+    const mouseY = e.clientY - bounds.top;
+    
+    menuToggle.style.setProperty('--mouse-x', `${mouseX}px`);
+    menuToggle.style.setProperty('--mouse-y', `${mouseY}px`);
+});
+
+// Remover efeito ao sair do botão
+menuToggle.addEventListener('mouseleave', () => {
+    menuToggle.style.removeProperty('--mouse-x');
+    menuToggle.style.removeProperty('--mouse-y');
+});
+
+  // Particles.js
   particlesJS('particles-js', {
       particles: {
           number: { value: 80, density: { enable: true, value_area: 800 } },
@@ -13,170 +101,187 @@ $(document).ready(function() {
       interactivity: {
           detect_on: "canvas",
           events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
-          modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
+          modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
       },
       retina_detect: true
   });
 
-  // Animações GSAP
+  // Projetos
+  const projetos = [
+      {
+          titulo: "Galeria de imagens",
+          descricao: "Em um exercício Ebac, esse é o projeto mais recente feito. Projeto de uma galeria de imagens!",
+          imagem: "https://ryanleal.vercel.app/images/project-image.jpg",
+          tecnologias: ["Html", "Css", "JavaScript", "jQuery"],
+          link: "https://wrlp-jquery-galeria-fotos.vercel.app"
+      },
+      // Adicione mais projetos aqui
+  ];
+
+  // Função para criar slides do Swiper
+  function createProjectSlides() {
+      const swiperWrapper = document.querySelector('.swiper-wrapper');
+      projetos.forEach((projeto, index) => {
+          const slide = document.createElement('div');
+          slide.className = 'swiper-slide';
+          slide.innerHTML = `
+              <div class="project-card">
+                  <div class="project-background">
+                      <img src="${projeto.imagem}" alt="" class="blur-background">
+                  </div>
+                  <div class="project-content">
+                      <img src="${projeto.imagem}" alt="${projeto.titulo}" class="project-image">
+                      <h3 class="project-title">${projeto.titulo}</h3>
+                      <p class="project-description">${projeto.descricao}</p>
+                      <div class="project-tech">
+                          ${projeto.tecnologias.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                      </div>
+                      <button class="project-link" data-project="${index}">Ver Detalhes</button>
+                  </div>
+              </div>
+          `;
+          swiperWrapper.appendChild(slide);
+      });
+  }
+
+  // Criar slides
+  createProjectSlides();
+
+  // Inicializar Swiper
+  const swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+      },
+      navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+      },
+      autoplay: {
+          delay: 5000,
+      },
+  });
+
+  // Modal
+  const modal = document.getElementById('project-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalImage = document.getElementById('modal-image');
+  const modalDescription = document.getElementById('modal-description');
+  const modalTech = document.getElementById('modal-tech');
+  const modalLink = document.getElementById('modal-link');
+  const closeModal = document.getElementsByClassName('close')[0];
+
+  function openModal(projeto) {
+      modalTitle.textContent = projeto.titulo;
+      modalImage.src = projeto.imagem;
+      modalImage.alt = projeto.titulo;
+      modalDescription.textContent = projeto.descricao;
+      modalTech.innerHTML = projeto.tecnologias.map(tech => `<span class="tech-tag">${tech}</span>`).join('');
+      modalLink.href = projeto.link;
+      modal.style.display = 'block';
+  }
+
+  closeModal.onclick = function() {
+      modal.style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = 'none';
+      }
+  }
+
+  // Adicionar evento de clique aos botões "Ver Detalhes"
+  document.addEventListener('click', function(e) {
+      if(e.target && e.target.classList.contains('project-link')) {
+          const projectIndex = e.target.getAttribute('data-project');
+          openModal(projetos[projectIndex]);
+      }
+  });
+
+  // Scroll to Top Button
+  const scrollTopButton = document.querySelector('.scroll-top');
+
+  window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+          scrollTopButton.classList.add('visible');
+      } else {
+          scrollTopButton.classList.remove('visible');
+      }
+  });
+
+  scrollTopButton.addEventListener('click', () => {
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      });
+  });
+
+  // GSAP Animations
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.from(".hero-title", {
-      duration: 1,
-      y: 50,
+  // Hero Section Animation
+  gsap.from('.hero-content', {
       opacity: 0,
-      ease: "power3.out",
-      delay: 0.5
-  });
-
-  gsap.from(".hero-description", {
-      duration: 1,
       y: 50,
-      opacity: 0,
-      ease: "power3.out",
-      delay: 0.8
-  });
-
-  gsap.from(".about-content", {
+      duration: 1,
+      ease: 'power3.out',
       scrollTrigger: {
-          trigger: ".about-content",
-          start: "top 80%"
-      },
-      duration: 1,
-      y: 50,
-      opacity: 0,
-      ease: "power3.out"
+          trigger: '.hero',
+          start: 'top center',
+      }
   });
 
-  gsap.from(".timeline-item", {
-      scrollTrigger: {
-          trigger: ".timeline-container",
-          start: "top 80%"
-      },
-      duration: 1,
-      y: 50,
+  // About Section Animation
+  gsap.from('.about-content', {
       opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+          trigger: '.about',
+          start: 'top center',
+      }
+  });
+
+  // Timeline Animation
+  gsap.from('.timeline-item', {
+      opacity: 0,
+      x: -50,
+      duration: 1,
+      ease: 'power3.out',
       stagger: 0.2,
-      ease: "power3.out"
-  });
-
-  gsap.from(".skill-item", {
       scrollTrigger: {
-          trigger: ".skills-grid",
-          start: "top 80%"
-      },
-      duration: 0.8,
-      y: 50,
+          trigger: '.timeline',
+          start: 'top center',
+      }
+  });
+
+  // Skills Animation
+  gsap.from('.skill-item', {
       opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: 'power3.out',
       stagger: 0.1,
-      ease: "power3.out"
-  });
-
-  // Configuração do carrossel de projetos
-  const projects = [
-    {
-      title: "Natour",
-      description: "Uma plataforma que ajuda você a descobrir as localizações mais intrigantes para suas férias. Reserve hotéis e spas com preços mais acessíveis.",
-      image: "/placeholder.svg?height=400&width=800",
-      tech: ["HTML", "CSS", "JavaScript"],
-      color: "#4CAF50",
-    },
-    {
-      title: "TechBlog",
-      description: "Um blog de tecnologia com artigos sobre as últimas tendências em desenvolvimento web e mobile.",
-      image: "/placeholder.svg?height=400&width=800",
-      tech: ["React", "Node.js", "MongoDB"],
-      color: "#2196F3",
-    },
-    {
-      title: "FitTrack",
-      description: "Aplicativo de acompanhamento de fitness que permite aos usuários registrar exercícios e monitorar sua dieta.",
-      image: "/placeholder.svg?height=400&width=800",
-      tech: ["Flutter", "Firebase", "Google Fit API"],
-      color: "#FF5722",
-    },
-  ];
-  
-  let currentIndex = 0;
-  
-  function updateProject() {
-    const project = projects[currentIndex];
-    document.getElementById("project-image").src = project.image;
-    document.getElementById("project-title").textContent = project.title;
-    document.getElementById("project-title").style.color = project.color;
-    document.getElementById("project-description").textContent = project.description;
-  
-    const techContainer = document.getElementById("project-tech");
-    techContainer.innerHTML = ""; // Limpa tecnologias antigas
-    project.tech.forEach((tech) => {
-      const tag = document.createElement("span");
-      tag.className = "tech-tag";
-      tag.style.backgroundColor = `${project.color}20`;
-      tag.style.color = project.color;
-      tag.textContent = tech;
-      techContainer.appendChild(tag);
-    });
-  
-    const link = document.getElementById("project-link");
-    link.style.backgroundColor = project.color;
-  }
-  
-  function nextProject() {
-    currentIndex = (currentIndex + 1) % projects.length;
-    updateProject();
-  }
-  
-  function prevProject() {
-    currentIndex = (currentIndex - 1 + projects.length) % projects.length;
-    updateProject();
-  }
-  
-  // Inicializa o primeiro projeto
-  document.addEventListener("DOMContentLoaded", updateProject);
-  
-
-  // Menu toggle
-  $('.menu-toggle').click(function() {
-      $('.menu-overlay').addClass('active');
-  });
-
-  $('.menu-close').click(function() {
-      $('.menu-overlay').removeClass('active');
-  });
-
-  // Scroll to top
-  $(window).scroll(function() {
-      if ($(this).scrollTop() > 100) {
-          $('.scroll-top').addClass('visible');
-      } else {
-          $('.scroll-top').removeClass('visible');
+      scrollTrigger: {
+          trigger: '.skills',
+          start: 'top center',
       }
   });
 
-  $('.scroll-top').click(function() {
-      $('html, body').animate({scrollTop : 0}, 800);
-      return false;
-  });
-
-  // Smooth scroll for anchor links
-  $('a[href^="#"]').on('click', function(event) {
-      var target = $(this.getAttribute('href'));
-      if( target.length ) {
-          event.preventDefault();
-          $('html, body').stop().animate({
-              scrollTop: target.offset().top
-          }, 1000);
+  // Contact Form Animation
+  gsap.from('.contact-form', {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+          trigger: '.contact',
+          start: 'top center',
       }
   });
-
-  // Form submission (you'll need to implement the actual form submission logic)
-  $('#contact-form').submit(function(e) {
-      e.preventDefault();
-      // Add your form submission logic here
-      alert('Formulário enviado! (Esta é apenas uma simulação)');
-  });
-
-  // Intro animation
-  gsap.to('.intro-text', {duration: 1, opacity: 1, y: -20, ease: "power3.out"});
-  gsap.to('.intro-animation', {duration: 1, y: '-100%', delay: 2, ease: "power3.inOut"});
 });

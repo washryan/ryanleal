@@ -35,7 +35,9 @@
 </head>
 <body>
     <div id="intro-animation" class="intro-animation">
-        <h1 class="intro-text">ryanleall</h1>
+        <svg id="intro-svg" width="300" height="100" viewBox="0 0 300 100">
+            <text x="150" y="50" text-anchor="middle" class="intro-text">ryanleall</text>
+        </svg>
     </div>
 
     <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
@@ -126,45 +128,42 @@
         </section>
         
         <section id="timeline" class="timeline" aria-labelledby="timeline-titulo">
-          <h2 id="timeline-titulo" class="section-title"><span class="highlight">Minha Jornada</span></h2>
-          <div class="timeline-container">
-              <div class="timeline-item" data-ano="2022">
-                  <h3>Início da Jornada em Programação</h3>
-                  <p>Primeiros passos no desenvolvimento web</p>
-              </div>
-              <div class="timeline-item" data-ano="2023">
-                  <h3>Desenvolvedor Full-Stack em Formação</h3>
-                  <p>Estudando Java e tecnologias web modernas</p>
-              </div>
-          </div>
-      </section>
-      <section class="project-card">
-        <div class="project-background">
-          <!-- Imagem de fundo embaçada -->
-          <img src="https://ryanleal.vercel.app/images/project-image.jpg" alt="Background" class="blur-background" />
+            <h2 id="timeline-titulo" class="section-title"><span class="highlight">Minha Jornada</span></h2>
+            <div class="timeline-container">
+                <div class="timeline-item" data-ano="2022">
+                    <h3>Início da Jornada em Programação</h3>
+                    <p>Primeiros passos no desenvolvimento web</p>
+                </div>
+                <div class="timeline-item" data-ano="2023">
+                    <h3>Desenvolvedor Full-Stack em Formação</h3>
+                    <p>Estudando Java e tecnologias web modernas</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos" class="melhores-projetos" aria-labelledby="projetos-titulo">
+            <h2 id="projetos-titulo" class="section-title"><span class="highlight">Melhores Projetos</span></h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Os slides dos projetos serão inseridos aqui dinamicamente pelo JavaScript -->
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <div id="project-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modal-title"></h2>
+                <img id="modal-image" src="" alt="Imagem do projeto">
+                <p id="modal-description"></p>
+                <div id="modal-tech"></div>
+                <a id="modal-link" href="" target="_blank" rel="noopener noreferrer">Visitar Projeto</a>
+            </div>
         </div>
-        <div class="project-content">
-          <!-- Imagem principal do projeto -->
-          <img src="https://ryanleal.vercel.app/images/project-image.jpg" alt="Imagem do projeto" class="project-image" />
-      
-          <!-- Conteúdo textual -->
-          <h2 class="project-title">Galeria de imagens</h2>
-          <p class="project-description">
-            Em um exercício Ebac, esse é o projeto mais recente feito. Projeto de uma galeria de imagens!
-          </p>
-      
-          <!-- Tecnologias usadas -->
-          <div class="project-tech">
-            <span class="tech-tag">Html</span>
-            <span class="tech-tag">Css</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">jQuery</span>
-          </div>
-      
-          <!-- Link para o projeto -->
-          <a href="https://wrlp-jquery-galeria-fotos.vercel.app" class="project-link">Visit</a>
-        </div>
-      </section>       
+        
         <section id="contato" class="contact" aria-labelledby="contato-titulo">
             <h2 id="contato-titulo" class="section-title"><span class="highlight">Contato</span></h2>
             <form id="contact-form" class="contact-form" aria-label="Formulário de contato">
