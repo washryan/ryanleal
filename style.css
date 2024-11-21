@@ -53,6 +53,8 @@ body {
   color: var(--text-color);
   font-family: var(--main-font);
   line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body::-webkit-scrollbar {
@@ -429,6 +431,7 @@ a:hover, a:focus {
   max-width: 800px;
   margin: 0 auto;
   position: relative;
+  padding: 0 20px;
 }
 
 .timeline-item {
@@ -442,8 +445,9 @@ a:hover, a:focus {
   position: absolute;
   left: -60px;
   top: 3px;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--neon-green);
   font-size: 0.9rem;
+  font-weight: bold;
 }
 
 .timeline-item::after {
@@ -868,11 +872,11 @@ a:hover, a:focus {
   }
 
   .timeline-container {
-    padding: 0 20px;
+    padding: 0 40px 0 80px;
   }
 
   .timeline-item::before {
-    left: -40px;
+    left: -70px;
   }
 
   .modal-content {
@@ -924,8 +928,12 @@ a:hover, a:focus {
     padding: 0 20px;
   }
 
+  .timeline-container {
+    padding: 0 20px 0 60px;
+  }
+
   .timeline-item::before {
-    left: -30px;
+    left: -50px;
   }
 
   .swiper-button-next,
