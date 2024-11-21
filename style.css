@@ -41,9 +41,11 @@ a, button, [role="button"] {
   cursor: pointer;
 }
 
-html {
+html, body {
   font-size: 16px;
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -51,7 +53,6 @@ body {
   color: var(--text-color);
   font-family: var(--main-font);
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
 body::-webkit-scrollbar {
@@ -464,8 +465,10 @@ a:hover, a:focus {
 }
 
 .swiper-container {
+  position: relative;
   width: 100%;
   height: 100%;
+  padding: 20px 40px;
 }
 
 .swiper-slide {
@@ -568,6 +571,12 @@ a:hover, a:focus {
 .swiper-button-next,
 .swiper-button-prev {
   color: var(--neon-green);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  z-index: 10;
 }
 
 .swiper-pagination-bullet {
@@ -830,10 +839,12 @@ a:hover, a:focus {
   }
 }
 
+/* Fix mobile responsiveness */
 @media (max-width: 768px) {
   .hero-content {
     flex-direction: column;
     text-align: center;
+    padding: 20px;
   }
 
   .hero-text {
@@ -842,13 +853,22 @@ a:hover, a:focus {
     max-width: 100%;
   }
 
+  .hero-title {
+    font-size: 2rem;
+  }
+
   .about-content {
     flex-direction: column;
+    padding: 20px;
   }
 
   .about-text {
     margin-right: 0;
     margin-bottom: 40px;
+  }
+
+  .timeline-container {
+    padding: 0 20px;
   }
 
   .timeline-item::before {
@@ -857,12 +877,42 @@ a:hover, a:focus {
 
   .modal-content {
     width: 95%;
+    margin: 10% auto;
+  }
+
+  .menu-columns {
+    flex-direction: column;
+  }
+
+  .menu-social-column {
+    height: 80px;
+  }
+
+  .menu-content {
+    padding: 20px 0;
+  }
+
+  .menu-item {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+
+  .swiper-container {
+    padding: 20px 30px;
+  }
+
+  .project-card {
+    margin: 0 10px;
+  }
+
+  .contact-form {
+    padding: 0 20px;
   }
 }
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .hero-description {
@@ -870,10 +920,43 @@ a:hover, a:focus {
   }
 
   .section-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    padding: 0 20px;
   }
 
   .timeline-item::before {
     left: -30px;
   }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 20px;
+    height: 20px;
+  }
+
+  .project-title {
+    font-size: 24px;
+  }
+
+  .menu-toggle {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+/* Fix any potential overflow issues */
+.melhores-projetos,
+.about,
+.timeline,
+.contact,
+.footer {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Ensure content stays within viewport */
+main {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
 }

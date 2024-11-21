@@ -41,51 +41,51 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Event Listeners
-menuToggle.addEventListener('click', toggleMenu);
+  menuToggle.addEventListener('click', toggleMenu);
 
-// Fechar menu ao clicar em um item
-menuItems.forEach(item => {
-    item.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = e.target.getAttribute('href');
-        
-        // Adicionar animação de saída
-        menuOverlay.style.transition = 'all 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6)';
-        menuToggle.classList.remove('active');
-        menuOverlay.classList.remove('active');
-        
-        // Esperar a animação terminar antes de rolar até a seção
-        setTimeout(() => {
-            document.querySelector(target).scrollIntoView({
-                behavior: 'smooth'
-            });
-            document.body.style.overflow = '';
-        }, 500);
-    });
-});
+  // Fechar menu ao clicar em um item
+  menuItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = e.target.getAttribute('href');
+          
+          // Adicionar animação de saída
+          menuOverlay.style.transition = 'all 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6)';
+          menuToggle.classList.remove('active');
+          menuOverlay.classList.remove('active');
+          
+          // Esperar a animação terminar antes de rolar até a seção
+          setTimeout(() => {
+              document.querySelector(target).scrollIntoView({
+                  behavior: 'smooth'
+              });
+              document.body.style.overflow = '';
+          }, 500);
+      });
+  });
 
-// Fechar menu ao pressionar ESC
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
-        toggleMenu();
-    }
-});
+  // Fechar menu ao pressionar ESC
+  document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
+          toggleMenu();
+      }
+  });
 
-// Adicionar efeito de hover com mouse
-menuToggle.addEventListener('mousemove', (e) => {
-    const bounds = menuToggle.getBoundingClientRect();
-    const mouseX = e.clientX - bounds.left;
-    const mouseY = e.clientY - bounds.top;
-    
-    menuToggle.style.setProperty('--mouse-x', `${mouseX}px`);
-    menuToggle.style.setProperty('--mouse-y', `${mouseY}px`);
-});
+  // Adicionar efeito de hover com mouse
+  menuToggle.addEventListener('mousemove', (e) => {
+      const bounds = menuToggle.getBoundingClientRect();
+      const mouseX = e.clientX - bounds.left;
+      const mouseY = e.clientY - bounds.top;
+      
+      menuToggle.style.setProperty('--mouse-x', `${mouseX}px`);
+      menuToggle.style.setProperty('--mouse-y', `${mouseY}px`);
+  });
 
-// Remover efeito ao sair do botão
-menuToggle.addEventListener('mouseleave', () => {
-    menuToggle.style.removeProperty('--mouse-x');
-    menuToggle.style.removeProperty('--mouse-y');
-});
+  // Remover efeito ao sair do botão
+  menuToggle.addEventListener('mouseleave', () => {
+      menuToggle.style.removeProperty('--mouse-x');
+      menuToggle.style.removeProperty('--mouse-y');
+  });
 
   // Particles.js
   particlesJS('particles-js', {
