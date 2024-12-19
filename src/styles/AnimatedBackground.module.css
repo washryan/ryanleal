@@ -1,0 +1,11 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0.2;
+  /* Ajuste este valor para controlar a opacidade do fundo */
+}

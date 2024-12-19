@@ -1,0 +1,38 @@
+.footer {
+  background-color: #0a192f;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.socialLink {
+  color: aliceblue;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.socialLink:hover {
+  color: #64ffda;
+  transform: translateY(-3px);
+  cursor: pointer;
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  text-align: center;
+}

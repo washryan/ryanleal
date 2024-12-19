@@ -1,0 +1,75 @@
+.contact {
+  padding: 60px 0;
+  background-color: #0a192f;
+  text-align: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 0px;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #64ffda;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formGroup label {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #112240;
+  border-radius: 20px 0;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background-color: #112240;
+  color: #ffffff;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  border-color: #64ffda;
+  resize: none;
+}
+
+.formGroup textarea {
+  resize: vertical;
+  height: 150px;
+  resize: none;
+}
+
+.submitButton {
+  padding: 12px 20px;
+  background-color: #64ffda;
+  color: #000;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 820px;
+}
+
+.submitButton:hover {
+  background-color: #4bb9a0;
+}

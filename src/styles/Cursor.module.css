@@ -1,0 +1,40 @@
+.cursor {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #64ffda;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate3d(0, 0, 0);
+  transition: width 0.3s, height 0.3s, background-color 0.3s;
+}
+
+.cursorDot {
+  width: 8px;
+  height: 8px;
+  background: #64ffda;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate3d(0, 0, 0);
+}
+
+.cursor.hovering {
+  width: 48px;
+  height: 48px;
+  background: rgba(100, 255, 218, 0.1);
+  mix-blend-mode: difference;
+}
+
+.cursorDot.hovering {
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .cursor,
+  .cursorDot {
+    display: none;
+  }
+}
