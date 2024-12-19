@@ -93,9 +93,11 @@ export default function AnimatedBackground() {
 
     return () => {
       window.removeEventListener('resize', handleResize)
-      container?.removeChild(renderer.domElement)
+      renderer.dispose()
+      container.removeChild(renderer.domElement)
     }
   }, [])
 
   return <div ref={containerRef} className={styles.background} />
 }
+

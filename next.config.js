@@ -1,7 +1,9 @@
-// next.config.js
-module.exports = {
-  experimental: {
-    appDir: false, // Remova esta linha
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: ['your-image-domain.com'], // Adicione os domínios permitidos para imagens
   },
-  // Outras configurações
-};
+}
+
+module.exports = nextConfig;
