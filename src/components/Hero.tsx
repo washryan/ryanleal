@@ -91,9 +91,11 @@ export default function Hero() {
         <motion.a 
           href="#work"
           className={styles.cta}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          whileHover={{ scale: 1.1, boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.2)" }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ duration: 0.1, delay: 0.1 }}
         >
           Ver Projetos
         </motion.a>

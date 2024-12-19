@@ -4,7 +4,6 @@ import WorkSection from '../components/WorkSection'
 import ExpertiseSection from '../components/ExpertiseSection'
 import EducationSection from '../components/EducationSection'
 import ContactSection from '../components/ContactSection'
-import Footer from '../components/Footer'
 
 export default function Home() {
   return (
@@ -14,7 +13,6 @@ export default function Home() {
       <ExpertiseSection />
       <EducationSection />
       <ContactSection />
-      <Footer />
     </Layout>
   )
 }
