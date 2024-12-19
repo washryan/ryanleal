@@ -1,0 +1,36 @@
+.container {
+  min-height: 100vh;
+  background-color: #0f1117;
+  color: #ffffff;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding-top: 80px;
+}
+
+.footer {
+  padding: 2rem 0;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.socialLink {
+  color: #64ffda;
+  text-decoration: none;
+  font-family: "Fira Code", monospace;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.socialLink:hover {
+  color: #45e0c0;
+}
