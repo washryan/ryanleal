@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+---
 
-## Getting Started
+# Portfólio - Ryan Leal
 
-First, run the development server:
+Olá! Seja bem-vindo ao meu portfólio pessoal. Este repositório contém todos os projetos e informações sobre minha jornada como desenvolvedor Full-Stack Java. Aqui você encontrará todos os detalhes sobre os projetos que desenvolvi, bem como links para visualizar e acessar cada um deles. Espero que gostem!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Índice
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Sobre](#sobre)
+- [Projetos](#projetos)
+- [Habilidades](#habilidades)
+- [Contato](#contato)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Sobre
 
-To learn more about Next.js, take a look at the following resources:
+**Nome**: Washington Ryan Leal (Ryan Leal)  
+**Instagram**: [@ryanleall](https://instagram.com/ryanleall)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Estou atualmente estudando Desenvolvimento Full-Stack Java na Escola Britânica de Artes Criativas (EBAC). Começarei minha faculdade de Análise e Desenvolvimento de Sistemas (ADS) em 2025. Meu objetivo é conseguir um estágio na área de Full-Stack Java e adquirir experiência para me preparar para um trabalho efetivo de júnior quando terminar a faculdade. Este portfólio contém informações sobre mim, minha trajetória e os projetos que desenvolvi durante meu curso e que continuo a desenvolver.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Projetos
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Projeto 1: **Portfólio Pessoal**
+Portfólio pessoal de Ryan Leal, com informações, projetos e trajetória na área de desenvolvimento Full-Stack Java
+**Tecnologias**: React, Next.js, CSS Modules
+**Link**: [Visite o projeto aqui](https://ryanleal.vercel.app)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Habilidades
+
+- **Full-Stack Development**: Conhecimento em desenvolvimento frontend e backend utilizando tecnologias como HTML, CSS, JavaScript, React, Node.js e MongoDB.
+- **Ferramentas de versionamento**: Git e GitHub.
+- **Desenvolvimento responsivo**: Capacidade de criar layouts que funcionam bem em dispositivos móveis e desktops.
+- **Ferramentas de design**: Familiaridade com Figma para criação de mockups e protótipos.
+
+---
+
+## Contato
+
+- **E-mail**: washr.3103@gmail.com
+- **LinkedIn**: [Ryan Leal](https://www.linkedin.com/in/washington-ryan-leal-passos-a47065331)
+- **Instagram**: [@ryanleall](https://instagram.com/ryanleall)
+
+Se você tiver alguma dúvida ou interesse em trabalhar comigo, sinta-se à vontade para entrar em contato!
+
+---
