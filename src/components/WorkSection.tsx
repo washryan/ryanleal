@@ -7,7 +7,7 @@ const projetoPrincipal = {
   descricao: 'Meu site de portfólio pessoal desenvolvido com React e Next.js.',
   imagem: '/images/portfolio.svg',
   tags: ['React', 'Next.js', 'CSS Modules'],
-  link: 'https://ryanleal.vercel.app'
+  link: 'https://ryanleal.vercel.a'
 }
 
 const projetos = [
