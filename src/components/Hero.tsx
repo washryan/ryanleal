@@ -57,11 +57,14 @@ export default function Hero() {
 
     window.addEventListener('resize', handleResize)
 
+    // Variável para armazenar o ref do container
+    const sceneContainer = sceneRef.current;
+
     return () => {
       window.removeEventListener('resize', handleResize)
       renderer.dispose()
-      if (sceneRef.current) {
-        sceneRef.current.removeChild(renderer.domElement)
+      if (sceneContainer) {
+        sceneContainer.removeChild(renderer.domElement)
       }
     }
   }, [])
@@ -99,4 +102,3 @@ export default function Hero() {
     </section>
   )
 }
-

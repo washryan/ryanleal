@@ -10,12 +10,14 @@ export default function AnimatedBackground() {
   useEffect(() => {
     if (!containerRef.current) return
 
+    const container = containerRef.current; // Copiar o valor para uma variável
+
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
     const renderer = new THREE.WebGLRenderer({ alpha: true })
 
     renderer.setSize(window.innerWidth, window.innerHeight)
-    containerRef.current.appendChild(renderer.domElement)
+    container.appendChild(renderer.domElement)
 
     // Criar lua
     const geometriaLua = new THREE.SphereGeometry(5, 32, 32)
@@ -91,10 +93,9 @@ export default function AnimatedBackground() {
 
     return () => {
       window.removeEventListener('resize', handleResize)
-      containerRef.current?.removeChild(renderer.domElement)
+      container?.removeChild(renderer.domElement)
     }
   }, [])
 
   return <div ref={containerRef} className={styles.background} />
 }
-

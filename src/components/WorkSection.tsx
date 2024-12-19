@@ -25,7 +25,7 @@ const projetos = [
     tags: ['Java', 'Spring Boot'],
     link: 'https://github.com/yourusername/project2'
   },
-  // Adicione mais projetos aqui
+  // Adicionar mais projetos aqui
 ]
 
 export default function WorkSection() {

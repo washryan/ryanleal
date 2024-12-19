@@ -15,4 +15,3 @@ export default function ExpertiseCard({ title, description, icon }: ExpertiseCar
     </div>
   )
 }
-

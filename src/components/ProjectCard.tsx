@@ -30,4 +30,3 @@ export default function ProjectCard({ title, description, image, tags, link }: P
     </div>
   )
 }
-
