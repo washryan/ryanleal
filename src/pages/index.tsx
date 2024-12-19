@@ -1,20 +1,21 @@
+import Layout from '../components/Layout'
 import Hero from '../components/Hero'
-import ExpertiseSection from '../components/ExpertiseSection'
 import WorkSection from '../components/WorkSection'
+import ExpertiseSection from '../components/ExpertiseSection'
 import EducationSection from '../components/EducationSection'
-import WorkExperienceSection from '../components/WorkExperienceSection'
 import ContactSection from '../components/ContactSection'
+import Footer from '../components/Footer'
 
 export default function Home() {
   return (
-    <>
+    <Layout>
       <Hero />
-      <ExpertiseSection />
       <WorkSection />
+      <ExpertiseSection />
       <EducationSection />
-      <WorkExperienceSection />
       <ContactSection />
-    </>
+      <Footer />
+    </Layout>
   )
 }
 
