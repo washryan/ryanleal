@@ -12,16 +12,16 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1.5rem 2rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .logo {
-  font-family: 'Fira Code', monospace;
+  font-family: var(--font-mono);
   font-size: 1.25rem;
-  color: #64ffda;
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 500;
 }
@@ -33,24 +33,19 @@
 
 .navItem {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  gap: 0.5rem;
   text-decoration: none;
-  position: relative;
-  padding-top: 0.5rem;
 }
 
 .navNumber {
-  font-family: 'Fira Code', monospace;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: #64ffda;
-  position: absolute;
-  top: -0.5rem;
-  right: 0;
+  color: var(--color-primary);
 }
 
 .navText {
-  font-family: 'Fira Code', monospace;
+  font-family: var(--font-mono);
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.7);
   transition: color 0.2s ease;
@@ -60,10 +55,17 @@
   color: #ffffff;
 }
 
-.navItem:hover~.navItem .navText {
-  color: rgba(255, 255, 255, 0.3);
+.active .navText {
+  color: var(--color-primary);
 }
 
-.active .navText {
-  color: #64ffda;
+/* Mobile styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .nav {
+    display: none; /* Hide desktop nav on mobile */
+  }
 }

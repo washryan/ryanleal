@@ -1,8 +1,7 @@
-'use client'
-
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
+import MobileMenu from './MobileMenu'
 import styles from '../styles/Header.module.css'
 
 export default function Header() {
@@ -19,9 +18,16 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
-          RyanLeal._
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            RyanLeal._
+          </motion.span>
         </Link>
-        <nav className={styles.nav}>
+        
+        <nav className={`${styles.nav} desktop-menu`}>
           {navItems.map((item) => (
             <Link 
               key={item.number} 
@@ -45,6 +51,8 @@ export default function Header() {
             </Link>
           ))}
         </nav>
+
+        <MobileMenu />
       </div>
     </header>
   )
