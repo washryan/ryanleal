@@ -1,16 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
+  /* Colors */
   --color-background: #0f1117;
   --color-foreground: #ffffff;
   --color-primary: #64ffda;
   --color-secondary: #0a192f;
   --color-accent: #ff6496;
-  --font-sans: 'Space Grotesk', sans-serif;
+  
+  /* Typography */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Outfit', sans-serif;
   --font-mono: 'Fira Code', monospace;
+  
+  /* Animations */
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -31,10 +40,21 @@ html {
   }
 }
 
+/* src/styles/globals.css */
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Impede rolagem horizontal */
+  margin: 0;
+  padding: 0;
+}
+
+
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
+  font-weight: 400;
   overflow-x: hidden;
   line-height: 1.6;
 }
@@ -49,7 +69,7 @@ button, .button {
   border-radius: 4px;
   font-family: var(--font-mono);
   font-size: 0.875rem;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
 }
 
 button:hover, .button:hover {
@@ -62,7 +82,7 @@ a {
   cursor: none;
   color: var(--color-primary);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
 }
 
 a:hover {
@@ -71,9 +91,10 @@ a:hover {
 
 /* Improved heading styles */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 /* Improved section styles */
@@ -123,7 +144,7 @@ section {
 
 /* Animation classes */
 .fade-in {
-  animation: fadeIn 0.5s ease-in forwards;
+  animation: fadeIn var(--transition-slow) ease-in forwards;
 }
 
 @keyframes fadeIn {
@@ -163,6 +184,36 @@ section {
 @media (max-width: 768px) {
   .container {
     padding: 0 1rem;
+  }
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.glitch {
+  position: relative;
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
   }
 }
 

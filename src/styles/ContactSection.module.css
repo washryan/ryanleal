@@ -57,7 +57,7 @@
 
 .formGroup textarea {
   min-height: 150px;
-  resize: vertical;
+  resize: none; /* Removed vertical resize */
 }
 
 .submitButton {
@@ -94,3 +94,4 @@
     max-width: 100%;
   }
 }
+

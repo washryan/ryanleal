@@ -1,62 +1,99 @@
 .card {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 20px;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cardContent {
+  position: relative;
   transition: transform 0.3s ease;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.imageWrapper {
+.imageContainer {
   position: relative;
-  width: 100%;
-  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
-.content {
-  padding: 1.5rem;
+.image {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(100, 255, 218, 0.2),
+    rgba(255, 100, 150, 0.2)
+  );
+  backdrop-filter: blur(4px);
+}
+
+.info {
+  padding: 0 10px;
 }
 
 .title {
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #64ffda;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--color-primary);
 }
 
 .description {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 1rem;
+  margin-bottom: 15px;
+  line-height: 1.6;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
 .tag {
   background: rgba(100, 255, 218, 0.1);
-  color: #64ffda;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  color: var(--color-primary);
+  padding: 4px 10px;
+  border-radius: 20px;
   font-size: 0.875rem;
+  font-family: var(--font-mono);
 }
 
 .link {
   display: inline-block;
-  background: #64ffda;
-  color: #0f1117;
-  padding: 0.5rem 1rem;
+  padding: 8px 20px;
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
   border-radius: 4px;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
   text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease;
 }
 
 .link:hover {
-  background: #45e0c0;
+  background: rgba(100, 255, 218, 0.1);
+  transform: translateY(-2px);
 }
+
+@media (max-width: 768px) {
+  .card {
+    transform: none !important;
+  }
+}
+

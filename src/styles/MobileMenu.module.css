@@ -1,3 +1,4 @@
+/* Estilos locais para o menu móvel */
 .mobileMenu {
   display: none;
   position: relative;
@@ -14,7 +15,11 @@
   background: transparent;
   border: none;
   padding: 1rem;
-  z-index: 1001;
+  position: fixed; /* Mantenha o botão fixo no topo da tela */
+  top: 1rem;
+  right: 1rem; /* Agora ele ficará no canto direito */
+  z-index: 1100; /* Garantir que o botão fique acima do menu */
+  cursor: pointer; /* Adicionando cursor para indicar que é clicável */
 }
 
 .hamburger {
@@ -34,6 +39,7 @@
   transition: all 0.3s ease;
 }
 
+/* Animações quando o menu estiver aberto */
 .hamburger.open span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
@@ -46,6 +52,7 @@
   transform: translateY(-9px) rotate(-45deg);
 }
 
+/* Menu lateral */
 .menuContent {
   position: fixed;
   top: 0;
@@ -55,12 +62,13 @@
   background: var(--color-secondary);
   padding: 6rem 2rem 2rem;
   box-shadow: -10px 0px 30px rgba(0, 0, 0, 0.3);
+  z-index: 1000; /* Garantir que o menu fique abaixo do botão hambúrguer */
 }
 
 .nav {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .navItem {
