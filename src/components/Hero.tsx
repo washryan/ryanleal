@@ -4,6 +4,8 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { motion } from 'framer-motion'
 import ScrollIndicator from './ScrollIndicator'
+import ParticleField from './ParticleField'
+import FloatingTechStack from './FloatingTechStack'
 import styles from '../styles/Hero.module.css'
 
 export default function Hero() {
@@ -91,8 +93,9 @@ export default function Hero() {
     }
   }, [])
 
-  return (
+    return (
     <section className={styles.hero}>
+      <ParticleField />
       <div className={styles.container}>
         <div className={styles.content}>
           <motion.div
@@ -123,8 +126,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              Desenvolvedor Full-Stack Java <br />
-              em Formação
+              Desenvolvedor Full-Stack Java & Front-End em Formação
             </motion.p>
             <motion.div
               className={styles.cta}
@@ -141,6 +143,7 @@ export default function Hero() {
                 Ver Projetos
               </motion.a>
             </motion.div>
+            <FloatingTechStack />
           </motion.div>
 
           <motion.div
@@ -167,4 +170,5 @@ export default function Hero() {
     </section>
   )
 }
+
 

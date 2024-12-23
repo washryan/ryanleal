@@ -1,17 +1,17 @@
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
-import WorkSection from '../components/WorkSection'
-import ExpertiseSection from '../components/ExpertiseSection'
-import EducationSection from '../components/EducationSection'
+import ProjectShowcase from '../components/ProjectShowcase'
+import SkillsSection from '../components/SkillsSection'
+import ExperienceTimeline from '../components/ExperienceTimeline'
 import ContactSection from '../components/ContactSection'
 
 export default function Home() {
   return (
     <Layout>
       <Hero />
-      <WorkSection />
-      <ExpertiseSection />
-      <EducationSection />
+      <SkillsSection />
+      <ProjectShowcase />
+      <ExperienceTimeline />
       <ContactSection />
     </Layout>
   )
