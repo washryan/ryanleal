@@ -18,10 +18,6 @@
   align-items: center;
 }
 
-.logo span {
-  font-size: 25px;
-}
-
 .logo {
   font-family: var(--font-mono);
   font-size: 1.25rem;
@@ -59,14 +55,9 @@
   color: #ffffff;
 }
 
-.active .navText {
-  color: var(--color-primary);
-}
-
-/* Mobile styles */
 @media (max-width: 768px) {
   .container {
-    padding: 1.7rem;
+    padding: 1rem;
   }
 
   .nav {

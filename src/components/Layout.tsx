@@ -3,6 +3,7 @@ import Header from './Header'
 import Footer from './Footer'
 import Cursor from './Cursor'
 import Meta from './Meta'
+import ScrollToTop from './ScrollToTop'
 import styles from '../styles/Layout.module.css'
 import AnimatedBackground from './AnimatedBackground'
 import IntroAnimation from './IntroAnimation'
@@ -30,6 +31,7 @@ export default function Layout({
         <Header />
         <main className={styles.main}>{children}</main>
         <Footer />
+        <ScrollToTop />
       </div>
     </>
   )

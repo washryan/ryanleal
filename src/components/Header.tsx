@@ -1,17 +1,15 @@
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import MobileMenu from './MobileMenu'
 import styles from '../styles/Header.module.css'
 
 export default function Header() {
-  const pathname = usePathname()
   const navItems = [
     { number: '01', name: 'início', path: '/' },
-    { number: '02', name: 'habilidades', path: '#expertise' },
-    { number: '03', name: 'projetos', path: '#work' },
-    { number: '04', name: 'experiência', path: '#work-experience' },
-    { number: '05', name: 'contato', path: '#contact' },
+    { number: '02', name: 'habilidades', path: '/#expertise' },
+    { number: '03', name: 'projetos', path: '/#projects' },
+    { number: '04', name: 'experiência', path: '/#experience' },
+    { number: '05', name: 'contato', path: '/#contact' },
   ]
 
   return (
@@ -32,7 +30,7 @@ export default function Header() {
             <Link 
               key={item.number} 
               href={item.path} 
-              className={`${styles.navItem} ${pathname === item.path ? styles.active : ''}`}
+              className={styles.navItem}
             >
               <motion.span
                 className={styles.navNumber}
@@ -43,7 +41,7 @@ export default function Header() {
               </motion.span>
               <motion.span
                 className={styles.navText}
-                whileHover={{ color: '#64ffda' }}
+                whileHover={{ color: 'var(--color-primary)' }}
                 transition={{ duration: 0.2 }}
               >
                 {item.name}

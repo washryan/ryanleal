@@ -1,37 +1,23 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
-import styles from '../styles/MobileMenu.module.css';
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
+import styles from '../styles/MobileMenu.module.css'
 
 export default function MobileMenu() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const menuItems = [
     { number: '01', name: 'início', path: '/' },
     { number: '02', name: 'habilidades', path: '#expertise' },
-    { number: '03', name: 'projetos', path: '#work' },
-    { number: '04', name: 'experiência', path: '#work-experience' },
+    { number: '03', name: 'projetos', path: '#projects' },
+    { number: '04', name: 'experiência', path: '#experience' },
     { number: '05', name: 'contato', path: '#contact' },
-  ];
-
-  // Função para rolar suavemente até a seção
-  const handleLinkClick = (path: string) => {
-    if (path.startsWith('#')) {
-      const element = document.querySelector(path);
-      if (element) {
-        element.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      }
-    }
-    setIsOpen(false); // Fecha o menu após a seleção
-  };
+  ]
 
   return (
     <div className={styles.mobileMenu}>
-      <button
-        className={styles.menuButton}
+      <button 
+        className={styles.menuButton} 
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Menu"
       >
@@ -62,7 +48,7 @@ export default function MobileMenu() {
                   <Link
                     href={item.path}
                     className={styles.navItem}
-                    onClick={() => handleLinkClick(item.path)}
+                    onClick={() => setIsOpen(false)}
                   >
                     <span className={styles.navNumber}>{item.number}</span>
                     <span className={styles.navText}>{item.name}</span>
@@ -74,6 +60,6 @@ export default function MobileMenu() {
         )}
       </AnimatePresence>
     </div>
-  );
+  )
 }
 

@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import styles from '../styles/ExperienceTimeline.module.css'
 
 interface Experience {
@@ -22,17 +23,6 @@ const experiences: Experience[] = [
     type: 'education'
   },
   {
-    title: 'Projeto Pessoal - EcoCode',
-    company: 'Desenvolvimento Independente',
-    period: '2023',
-    description: [
-      'Criação de uma plataforma de e-commerce sustentável',
-      'Utilização de Java, Spring Boot, React, e MySQL',
-      'Implementação de práticas de desenvolvimento sustentável'
-    ],
-    type: 'work'
-  },
-  {
     title: 'Futuro Estudante de ADS',
     company: 'Instituição a ser definida',
     period: '2025 - Futuro',
@@ -45,17 +35,31 @@ const experiences: Experience[] = [
   }
 ]
 
-export default function ExperienceTimeline() {
+interface ExperienceTimelineProps {
+  id: string;
+}
+
+export default function ExperienceTimeline({ id }: ExperienceTimelineProps) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.2 })
+
   return (
-    <section className={styles.timeline}>
-      <h2 className={styles.title}>Experiência e Educação</h2>
+    <section id={id} ref={ref} className={styles.timeline}>
+      <motion.h2
+        className={styles.title}
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5 }}
+      >
+        Experiência e Educação
+      </motion.h2>
       <div className={styles.container}>
         {experiences.map((exp, index) => (
           <motion.div
             key={index}
             className={`${styles.item} ${styles[exp.type]}`}
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.2 }}
           >
             <div className={styles.content}>
