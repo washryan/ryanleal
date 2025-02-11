@@ -12,9 +12,20 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
+    title:'"Jovem Aprendiz - Setor de TI',
+    company: 'Construtora Venâncio',
+    period: '2021 - 2022',
+    description: [
+      'Realizava o envio de notas fiscais no sistema interno.',
+      'Executava montagem e manutenção de computadores.',
+      'Prestava suporte técnico e auxiliava na manutenção de sistemas.'
+    ],
+    type: "work"
+  },
+  {
     title: 'Estudante de Desenvolvimento Full-Stack Java',
     company: 'EBAC - Escola Britânica de Artes Criativas e Tecnologia',
-    period: '2023 - Presente',
+    period: '2022 - Presente',
     description: [
       'Aprendendo Java, Spring Boot, e desenvolvimento web moderno',
       'Trabalhando em projetos práticos e colaborativos',
@@ -23,13 +34,24 @@ const experiences: Experience[] = [
     type: 'education'
   },
   {
-    title: 'Futuro Estudante de ADS',
-    company: 'Instituição a ser definida',
-    period: '2025 - Futuro',
+    title: 'Analise e Desenvolvimento de Sistemas (1º Período)',
+    company: 'Faculdade Maurício de Nassau',
+    period: '2025 - Presente',
     description: [
-      'Planejando iniciar graduação em Análise e Desenvolvimento de Sistemas',
+      'Graduação em Análise e Desenvolvimento de Sistemas',
       'Foco em aprofundar conhecimentos em programação e sistemas de informação',
       'Preparação para carreira profissional na área de tecnologia'
+    ],
+    type: 'education'
+  },
+  {
+    title: 'Técnico em Desenvolvimento de Sistemas',
+    company: 'SENAI Petrolina',
+    period: '2025 - Presente',
+    description: [
+      'Aprimorando habilidades em programação, banco de dados e desenvolvimento web.',
+      'Estudando tecnologias como HTML, CSS, JavaScript, C#, SQL e frameworks modernos.',
+      'Focando em projetos práticos para construir experiência no desenvolvimento de software.'
     ],
     type: 'education'
   }
