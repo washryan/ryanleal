@@ -3,13 +3,12 @@ import { useEffect } from 'react'
 import styles from '../styles/FloatingTechStack.module.css'
 
 const technologies = [
-  { name: 'Java', icon: '☕', color: '#f89820' },
-  { name: 'Spring', icon: '🍃', color: '#6db33f' },
-  { name: 'React', icon: '⚛️', color: '#61dafb' },
-  { name: 'TypeScript', icon: '📘', color: '#3178c6' },
-  { name: 'Next.js', icon: '▲', color: '#ffffff' },
-  { name: 'Node.js', icon: '💚', color: '#339933' },
-  { name: 'MySQL', icon: '🐬', color: '#4479a1' },
+  { name: 'HTML', icon: '🔶', color: '#E34F26' },
+  { name: 'CSS', icon: '🎨', color: '#1572B6' },
+  { name: 'JavaScript', icon: '🚀', color: '#F7DF1E' },
+  { name: 'jQuery', icon: '📟', color: '#0769AD' },
+  { name: 'jQuery Plugins', icon: '🛠️', color: '#0769AD' },
+  { name: 'CSS Responsivo', icon: '📱', color: '#264de4' },
   { name: 'Git', icon: '📦', color: '#f05032' }
 ]
 
