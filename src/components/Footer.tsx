@@ -9,7 +9,7 @@ export default function Footer() {
           <a href="https://github.com/washryan" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
             <FaGithub size={24} />
           </a>
-          <a href="https://www.linkedin.com/in/washington-ryan-leal-passos-a47065331/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+          <a href="https://www.linkedin.com/in/ryanleall/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
             <FaLinkedin size={24} />
           </a>
           <a href="https://www.instagram.com/ryanleall" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
