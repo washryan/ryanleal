@@ -21,7 +21,7 @@ const experiences: Experience[] = [
       '-'
     ],
     type: 'work'
-  }
+  },
   {
     title: 'Analise e Desenvolvimento de Sistemas (1º Período)',
     company: 'Faculdade Maurício de Nassau',
