@@ -12,15 +12,26 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    title:'"Jovem Aprendiz - Setor de TI',
-    company: 'Construtora Venâncio',
-    period: '2021 - 2022',
+    title: 'Assistente de TI',
+    company: '-',
+    period: '2025 - Presente',
     description: [
-      'Realizava o envio de notas fiscais no sistema interno.',
-      'Executava montagem e manutenção de computadores.',
-      'Prestava suporte técnico e auxiliava na manutenção de sistemas.'
+      '-',
+      '-',
+      '-'
     ],
-    type: "work"
+    type: 'work'
+  }
+  {
+    title: 'Analise e Desenvolvimento de Sistemas (1º Período)',
+    company: 'Faculdade Maurício de Nassau',
+    period: '2025 - Presente',
+    description: [
+      'Graduação em Análise e Desenvolvimento de Sistemas',
+      'Foco em aprofundar conhecimentos em programação e sistemas de informação',
+      'Preparação para carreira profissional na área de tecnologia'
+    ],
+    type: 'education'
   },
   {
     title: 'Estudante de Desenvolvimento Full-Stack Java',
@@ -34,26 +45,15 @@ const experiences: Experience[] = [
     type: 'education'
   },
   {
-    title: 'Analise e Desenvolvimento de Sistemas (1º Período)',
-    company: 'Faculdade Maurício de Nassau',
-    period: '2025 - Presente',
+    title:'"Jovem Aprendiz - Setor de TI',
+    company: 'Construtora Venâncio',
+    period: '2021 - 2022',
     description: [
-      'Graduação em Análise e Desenvolvimento de Sistemas',
-      'Foco em aprofundar conhecimentos em programação e sistemas de informação',
-      'Preparação para carreira profissional na área de tecnologia'
+      'Realizava o envio de notas fiscais no sistema interno.',
+      'Executava montagem e manutenção de computadores.',
+      'Prestava suporte técnico e auxiliava na manutenção de sistemas.'
     ],
-    type: 'education'
-  },
-  {
-    title: 'Técnico em Desenvolvimento de Sistemas',
-    company: 'SENAI Petrolina',
-    period: '2025 - Presente',
-    description: [
-      'Aprimorando habilidades em programação, banco de dados e desenvolvimento web.',
-      'Estudando tecnologias como HTML, CSS, JavaScript, C#, SQL e frameworks modernos.',
-      'Focando em projetos práticos para construir experiência no desenvolvimento de software.'
-    ],
-    type: 'education'
+    type: "work"
   }
 ]
 
