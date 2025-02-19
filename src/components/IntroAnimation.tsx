@@ -22,9 +22,9 @@ export default function IntroAnimation() {
   }, [])
 
   const steps = [
-    { text: '> Initializing...', color: '#64ffda' },
-    { text: '> Loading skills...', color: '#ff6496' },
-    { text: '> Ready!', color: '#64ffda' }
+    { text: '> Inicializando...', color: '#64ffda' },
+    { text: '> Carregando habilidades...', color: '#ff6496' },
+    { text: '> Pronto!', color: '#64ffda' }
   ]
 
   return (
