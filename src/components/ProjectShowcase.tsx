@@ -16,96 +16,26 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: 'ecocode',
-    title: 'EcoCode',
-    description: 'Plataforma de e-commerce sustentável com Java e Spring Boot',
-    image: '/images/ecocode.jpg',
-    link: 'https://github.com/ryanleal/ecocode',
-    tech: ['Java', 'Spring Boot', 'React', 'MySQL'],
-    color: '#4ade80',
-    tags: ['Web', 'Backend', 'Frontend']
-  },
-  {
-    id: 'taskflow',
-    title: 'TaskFlow',
-    description: 'Aplicativo de gerenciamento de tarefas com React e Node.js',
-    image: '/images/taskflow.jpg',
-    link: 'https://github.com/ryanleal/taskflow',
-    tech: ['React', 'Node.js', 'MongoDB', 'Express'],
-    color: '#60a5fa',
-    tags: ['Web', 'Frontend', 'Backend']
-  },
-  {
-    id: 'codequest',
-    title: 'CodeQuest',
-    description: 'Plataforma gamificada para aprendizado de programação',
-    image: '/images/codequest.jpg',
-    link: 'https://github.com/ryanleal/codequest',
-    tech: ['Vue.js', 'Firebase', 'Node.js', 'Express'],
-    color: '#f472b6',
-    tags: ['Web', 'Frontend', 'Education']
-  },
-  // Adicione mais 6 projetos para chegar a 9
-  {
-    id: 'smartbudget',
-    title: 'SmartBudget',
-    description: 'Aplicativo de gerenciamento financeiro pessoal',
-    image: '/images/smartbudget.jpg',
-    link: 'https://github.com/ryanleal/smartbudget',
-    tech: ['React Native', 'Firebase', 'Redux'],
-    color: '#10b981',
-    tags: ['Mobile', 'Frontend']
-  },
-  {
-    id: 'aiwriter',
-    title: 'AI Writer',
-    description: 'Ferramenta de escrita assistida por IA',
-    image: '/images/aiwriter.jpg',
-    link: 'https://github.com/ryanleal/aiwriter',
-    tech: ['Python', 'Flask', 'TensorFlow', 'React'],
-    color: '#8b5cf6',
-    tags: ['Web', 'AI', 'Frontend', 'Backend']
-  },
-  {
-    id: 'fittrack',
-    title: 'FitTrack',
-    description: 'Aplicativo de acompanhamento de exercícios e nutrição',
-    image: '/images/fittrack.jpg',
-    link: 'https://github.com/ryanleal/fittrack',
-    tech: ['Flutter', 'Firebase', 'GraphQL'],
-    color: '#f59e0b',
-    tags: ['Mobile', 'Frontend', 'Backend']
-  },
-  {
-    id: 'ecomap',
-    title: 'EcoMap',
-    description: 'Mapa interativo de pontos de reciclagem',
-    image: '/images/ecomap.jpg',
-    link: 'https://github.com/ryanleal/ecomap',
-    tech: ['React', 'Mapbox GL', 'Node.js', 'MongoDB'],
-    color: '#34d399',
-    tags: ['Web', 'Frontend', 'Backend']
-  },
-  {
-    id: 'devconnect',
-    title: 'DevConnect',
-    description: 'Rede social para desenvolvedores',
-    image: '/images/devconnect.jpg',
-    link: 'https://github.com/ryanleal/devconnect',
-    tech: ['React', 'Node.js', 'Express', 'MongoDB'],
-    color: '#3b82f6',
-    tags: ['Web', 'Frontend', 'Backend']
-  },
-  {
-    id: 'cryptotracker',
-    title: 'CryptoTracker',
-    description: 'Dashboard para acompanhamento de criptomoedas',
-    image: '/images/cryptotracker.jpg',
-    link: 'https://github.com/ryanleal/cryptotracker',
-    tech: ['Vue.js', 'Vuex', 'Chart.js', 'CoinGecko API'],
-    color: '#ec4899',
+    id: 'one-piece-site',
+    title: 'One Piece Bio',
+    description: 'Site com a biografia do anime One Piece e seus personagens principais.',
+    image: '/images/one-piece.jpg',
+    link: 'https://github.com/washryan/projeto_onepiecesite',
+    tech: ['HTML', 'CSS'],
+    color: '#facc15',
     tags: ['Web', 'Frontend']
-  }
+  },
+  {
+    id: 'agenda-de-contatos',
+    title: 'Agenda de Contatos',
+    description: 'Aplicativo para gerenciamento de contatos, facilitando a organização e acessibilidade.',
+    image: '/images/agenda-contatos.jpg',
+    link: 'https://github.com/washryan/projeto_agenda_contatos',
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    color: '#60a5fa',
+    tags: ['Web', 'Frontend']
+  },
+  // Preciso adicionar mais 7 projetos para chegar a 9
 ]
 
 const allTags = Array.from(new Set(projects.flatMap(project => project.tags)))
