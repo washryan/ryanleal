@@ -10,14 +10,10 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { name: 'Java', level: 85, color: '#f89820', icon: '☕' },
-  { name: 'Spring Boot', level: 80, color: '#6db33f', icon: '🍃' },
-  { name: 'React', level: 75, color: '#61dafb', icon: '⚛️' },
-  { name: 'TypeScript', level: 70, color: '#3178c6', icon: '📘' },
-  { name: 'Next.js', level: 65, color: '#ffffff', icon: '▲' },
-  { name: 'Node.js', level: 70, color: '#339933', icon: '💚' },
-  { name: 'MySQL', level: 75, color: '#4479a1', icon: '🐬' },
-  { name: 'MongoDB', level: 65, color: '#47a248', icon: '🍃' }
+  { name: 'HTML', level: 100, color: '#E34F26', icon: '🔶' },
+  { name: 'CSS', level: 75, color: '#1572B6', icon: '🎨' },
+  { name: 'JavaScript', level: 75, color: '#F7DF1E', icon: '🚀' },
+  { name: 'jQuery', level: 65, color: '#0769AD', icon: '📟' }
 ]
 
 interface SkillsSectionProps {
