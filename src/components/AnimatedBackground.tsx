@@ -10,7 +10,7 @@ export default function AnimatedBackground() {
   useEffect(() => {
     if (!containerRef.current) return
 
-    const container = containerRef.current; // Copiar o valor para uma variável
+    const container = containerRef.current;
 
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
@@ -19,14 +19,13 @@ export default function AnimatedBackground() {
     renderer.setSize(window.innerWidth, window.innerHeight)
     container.appendChild(renderer.domElement)
 
-    // Criar lua
     const geometriaLua = new THREE.SphereGeometry(5, 32, 32)
     const materialLua = new THREE.MeshPhongMaterial({ color: 0xffffff })
     const lua = new THREE.Mesh(geometriaLua, materialLua)
     lua.position.set(20, 15, -20)
     scene.add(lua)
 
-    // Criar cubos
+
     const geometriaCubo = new THREE.BoxGeometry(2, 2, 2)
     const materialCubo = new THREE.MeshPhongMaterial({ color: 0x00ff00, wireframe: true })
     for (let i = 0; i < 10; i++) {
@@ -39,7 +38,6 @@ export default function AnimatedBackground() {
       scene.add(cubo)
     }
 
-    // Criar cilindros
     const geometriaCilindro = new THREE.CylinderGeometry(1, 1, 4, 32)
     const materialCilindro = new THREE.MeshPhongMaterial({ color: 0x0000ff, wireframe: true })
     for (let i = 0; i < 5; i++) {
@@ -52,7 +50,6 @@ export default function AnimatedBackground() {
       scene.add(cilindro)
     }
 
-    // Adicionar luzes
     const luzAmbiente = new THREE.AmbientLight(0x404040)
     scene.add(luzAmbiente)
 

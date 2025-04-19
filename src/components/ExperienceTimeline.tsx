@@ -12,15 +12,15 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    title: 'Assistente de TI',
-    company: '-',
-    period: '2025 - Presente',
+    title: "Assistente de TI",
+    company: "Assaí Atacadista,",
+    period: "2025 - Presente",
     description: [
-      '-',
-      '-',
-      '-'
+      "Desenvolvimento e manutenção de programas de computador conforme diretrizes técnicas.",
+      "Suporte à equipe da Frente de Caixa, solucionando problemas sistêmicos para evitar interrupções.",
+      "Acompanhamento de chamados e assistência na manutenção de equipamentos e sistemas."
     ],
-    type: 'work'
+    type: "work"
   },
   {
     title: 'Analise e Desenvolvimento de Sistemas (1º Período)',
