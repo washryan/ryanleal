@@ -1,88 +1,403 @@
 .timeline {
-  padding: 4rem 1rem;
-  background-color: var(--color-background);
-}
-
-.title {
-  font-size: 2.5rem;
-  text-align: center;
-  color: var(--color-primary);
-  margin-bottom: 3rem;
+  padding: 8rem 1rem;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
-}
-
-.item {
   position: relative;
-  padding-left: 2rem;
-  margin-bottom: 3rem;
-  border-left: 2px solid var(--color-primary);
 }
 
-.content {
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  border-radius: 8px;
+.title {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
 }
 
-.itemTitle {
-  font-size: 1.5rem;
-  color: var(--color-primary);
+.title {
+  font-size: 3rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.titleIcon {
+  font-size: 2rem;
   margin-bottom: 0.5rem;
+}
+
+.titleSubtext {
+  font-size: 1.2rem;
+  color: var(--color-muted);
+  font-weight: 400;
+  font-family: var(--font-mono);
+}
+
+.timelineContainer {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 2rem;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-accent));
+  border-radius: 2px;
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 4rem;
+  padding-left: 6rem;
+  cursor: pointer;
+}
+
+.timelineMarker {
+  position: absolute;
+  left: 0.75rem;
+  top: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 3px solid var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  z-index: 2;
+  transition: var(--transition-all);
+  backdrop-filter: blur(10px);
+}
+
+.timelineItem:hover .timelineMarker {
+  transform: scale(1.1);
+  background: var(--color-primary);
+  color: white;
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+}
+
+.pulseRing {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+.timelineContent {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  transition: var(--transition-all);
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.timelineContent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  opacity: 0;
+  border-radius: 1.5rem;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.timelineItem:hover .timelineContent::before {
+  opacity: 0.05;
+}
+
+.timelineItem:hover .timelineContent {
+  border-color: var(--color-primary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.contentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.titleSection {
+  flex: 1;
+}
+
+.experienceTitle {
+  font-size: 1.5rem;
+  color: var(--color-foreground);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.companyInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .company {
-  font-size: 1rem;
-  color: var(--color-foreground);
-  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  font-weight: 600;
 }
 
-.period {
+.currentBadge {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metaInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.period,
+.location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-muted);
   font-size: 0.875rem;
-  color: var(--color-primary);
-  margin-bottom: 1rem;
+  font-family: var(--font-mono);
 }
 
 .description {
-  list-style-type: none;
-  padding: 0;
+  margin-bottom: 1.5rem;
 }
 
-.description li {
-  margin-bottom: 0.5rem;
-  position: relative;
-  padding-left: 1.5rem;
+.descriptionItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-foreground);
+  line-height: 1.6;
 }
 
-.description li::before {
-  content: '•';
+.bullet {
   color: var(--color-primary);
-  position: absolute;
-  left: 0;
+  font-weight: bold;
+  margin-top: 0.1rem;
 }
 
-.education {
-  border-left-color: #4ade80;
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.work {
-  border-left-color: #60a5fa;
+.skill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-foreground);
+  padding: 0.4rem 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: var(--transition-all);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.skill:hover {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.achievements {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.achievementsHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.achievement {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-foreground);
+  line-height: 1.5;
+}
+
+.achievementIcon {
+  font-size: 1rem;
+}
+
+.expandButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-foreground);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-all);
+  font-size: 0.875rem;
+  backdrop-filter: blur(10px);
+}
+
+.expandButton:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(100, 255, 218, 0.1);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  transition: var(--transition-all);
+  backdrop-filter: blur(10px);
+}
+
+.stat:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.work .timelineMarker {
+  border-color: #60a5fa;
+}
+
+.work:hover .timelineMarker {
+  background: #60a5fa;
+  box-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+}
+
+.education .timelineMarker {
+  border-color: #4ade80;
+}
+
+.education:hover .timelineMarker {
+  background: #4ade80;
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
 }
 
 @media (max-width: 768px) {
   .timeline {
-    padding: 3rem 1rem;
+    padding: 4rem 1rem;
   }
 
   .title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
-  .item {
-    padding-left: 1.5rem;
+  .timelineItem {
+    padding-left: 4rem;
+  }
+
+  .timelineLine {
+    left: 1.25rem;
+  }
+
+  .timelineMarker {
+    left: 0rem;
+  }
+
+  .contentHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .metaInfo {
+    align-items: flex-start;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
   }
 }
-

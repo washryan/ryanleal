@@ -9,9 +9,10 @@ interface ProjectCardProps {
   image: string
   tech: string[]
   link: string
+  site?: string
 }
 
-export default function ProjectCard({ title, description, image, tech, link }: ProjectCardProps) {
+export default function ProjectCard({ title, description, image, tech, link, site }: ProjectCardProps) {
   const [isFlipped, setIsFlipped] = useState(false)
 
   return (
@@ -45,9 +46,16 @@ export default function ProjectCard({ title, description, image, tech, link }: P
               </span>
             ))}
           </div>
-          <a href={link} target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
-            Ver Projeto
-          </a>
+          <div className={styles.buttonRow}>
+            <a href={link} target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
+              Ver Projeto
+            </a>
+            {site && (
+              <a href={site} target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
+                Ver Site
+              </a>
+            )}
+          </div>
           <button className={styles.flipButton} onClick={() => setIsFlipped(false)}>
             Voltar
           </button>
@@ -56,4 +64,3 @@ export default function ProjectCard({ title, description, image, tech, link }: P
     </motion.div>
   )
 }
-

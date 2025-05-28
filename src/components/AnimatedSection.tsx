@@ -1,28 +1,28 @@
-import { ReactNode } from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+"use client"
+
+import type React from "react"
+
+import { useRef } from "react"
+import { motion, useInView } from "framer-motion"
 
 interface AnimatedSectionProps {
-  children: ReactNode
+  children: React.ReactNode
   className?: string
 }
 
 export default function AnimatedSection({ children, className }: AnimatedSectionProps) {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   return (
     <motion.section
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.5 }}
       className={className}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
       {children}
     </motion.section>
   )
 }
-

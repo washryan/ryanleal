@@ -1,12 +1,13 @@
-import { ReactNode } from 'react'
-import Header from './Header'
-import Footer from './Footer'
-import Cursor from './Cursor'
-import Meta from './Meta'
-import ScrollToTop from './ScrollToTop'
-import styles from '../styles/Layout.module.css'
-import AnimatedBackground from './AnimatedBackground'
-import IntroAnimation from './IntroAnimation'
+"use client"
+
+import type { ReactNode } from "react"
+import Header from "./Header"
+import Footer from "./Footer"
+import Meta from "./Meta"
+import ScrollToTop from "./ScrollToTop"
+import GlobalBackground from "./GlobalBackground"
+import IntroAnimation from "./IntroAnimation"
+import styles from "../styles/Layout.module.css"
 
 interface LayoutProps {
   children: ReactNode
@@ -15,19 +16,13 @@ interface LayoutProps {
   image?: string
 }
 
-export default function Layout({ 
-  children, 
-  title,
-  description,
-  image 
-}: LayoutProps) {
+export default function Layout({ children, title, description, image }: LayoutProps) {
   return (
     <>
       <Meta title={title} description={description} image={image} />
       <div className={styles.container}>
         <IntroAnimation />
-        <Cursor />
-        <AnimatedBackground />
+        <GlobalBackground />
         <Header />
         <main className={styles.main}>{children}</main>
         <Footer />
@@ -36,4 +31,3 @@ export default function Layout({
     </>
   )
 }
-

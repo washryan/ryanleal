@@ -3,56 +3,192 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
-  background: rgba(15, 17, 23, 0.8);
-  backdrop-filter: blur(10px);
+  z-index: 1000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.headerBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.morphingShape {
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 120%;
+  height: 200%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  opacity: 0.03;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
-.logo {
+.logoContainer {
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.logoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  opacity: 0.1;
+  border-radius: 20px;
+}
+
+.logoText {
   font-family: var(--font-mono);
   font-size: 1.25rem;
   color: var(--color-primary);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 700;
+  position: relative;
+  z-index: 2;
+}
+
+.logoGlow {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-radius: 22px;
+  opacity: 0;
+  z-index: -1;
+  filter: blur(8px);
 }
 
 .nav {
   display: flex;
-  gap: 2rem;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.navItemWrapper {
+  position: relative;
 }
 
 .navItem {
+  text-decoration: none;
+  display: block;
+}
+
+.magneticButton {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
 }
 
 .navNumber {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--color-primary);
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.navContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .navText {
   font-family: var(--font-mono);
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.7);
-  transition: color 0.2s ease;
+  color: var(--color-foreground);
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
 }
 
-.navItem:hover .navText {
-  color: #ffffff;
+.liquidBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.mobileMenuButton {
+  display: none;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-foreground);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.menuIcon,
+.closeIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.headerParticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 50%;
+}
+
+.scrolled {
+  backdrop-filter: blur(20px) !important;
+  border-bottom-color: rgba(100, 255, 218, 0.2);
+}
+
+.scrolled .logoGlow {
+  opacity: 0.3;
 }
 
 @media (max-width: 768px) {
@@ -62,5 +198,9 @@
 
   .nav {
     display: none;
+  }
+
+  .mobileMenuButton {
+    display: flex;
   }
 }
