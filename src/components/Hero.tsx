@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { motion, useTransform, useScroll } from "framer-motion"
-import { ChevronDown, Download, Mail, Github, Linkedin, Instagram, Code, Database, Cpu } from "lucide-react"
+import { ChevronDown, Download, Mail, Github, Linkedin, Instagram } from "lucide-react"
 import TypewriterEffect from "./TypewriterEffect"
 import styles from "../styles/Hero.module.css"
 
@@ -63,9 +63,9 @@ export default function Hero() {
   ]
 
   const stats = [
-    { icon: Code, label: "Projetos", value: "4+", color: "#64ffda" },
-    { icon: Database, label: "Tecnologias", value: "9+", color: "#ff6b6b" },
-    { icon: Cpu, label: "Experiência", value: "2+", color: "#4ecdc4" },
+    { label: "Projetos", value: "3+", color: "#64ffda" },
+    { label: "Tecnologias", value: "9+", color: "#ff6b6b" },
+    { label: "Experiência", value: "2+", color: "#4ecdc4" },
   ]
 
   return (
@@ -119,26 +119,6 @@ export default function Hero() {
               na EBAC e cursando Análise e Desenvolvimento de Sistemas na Faculdade Maurício de Nassau.
             </motion.p>
 
-            {/* Stats */}
-            <motion.div className={styles.stats} variants={itemVariants}>
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  className={styles.statItem}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1 + index * 0.1 }}
-                >
-                  <stat.icon size={24} style={{ color: stat.color }} />
-                  <div>
-                    <div className={styles.statValue}>{stat.value}</div>
-                    <div className={styles.statLabel}>{stat.label}</div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-
             <motion.div className={styles.ctaButtons} variants={itemVariants}>
               <motion.a
                 href="#expertise"
@@ -149,7 +129,7 @@ export default function Hero() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span>Ver Projetos</span>
+                <span>Explorar Projetos</span>
                 <ChevronDown size={20} />
               </motion.a>
 
@@ -210,7 +190,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          <motion.div className={styles.imageContainer} variants={itemVariants} style={{ y }}>
+          <motion.div className={styles.rightContent} variants={itemVariants}>
             <motion.div
               className={styles.imageWrapper}
               whileHover={{
@@ -227,58 +207,32 @@ export default function Hero() {
                 height={400}
                 className={styles.profileImage}
                 priority
+                onError={(e) => {
+                  // Fallback para imagem de perfil
+                  const target = e.target as HTMLImageElement
+                  target.src = "https://via.placeholder.com/320x400/64ffda/ffffff?text=Ryan+Leal"
+                }}
               />
+            </motion.div>
 
-              {/* Floating tech badges */}
-              <motion.div
-                className={styles.techBadge1}
-                animate={{
-                  y: [-8, 8, -8],
-                  rotate: [0, 3, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                }}
-              >
-                <span>☕</span>
-                <span>Java</span>
-              </motion.div>
-
-              <motion.div
-                className={styles.techBadge2}
-                animate={{
-                  y: [8, -8, 8],
-                  rotate: [0, -3, 0],
-                }}
-                transition={{
-                  duration: 3.5,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                  delay: 1,
-                }}
-              >
-                <span>⚛️</span>
-                <span>React</span>
-              </motion.div>
-
-              <motion.div
-                className={styles.techBadge3}
-                animate={{
-                  scale: [1, 1.05, 1],
-                  rotate: [0, 5, 0],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                  delay: 2,
-                }}
-              >
-                <span>🖥️</span>
-                <span>IT</span>
-              </motion.div>
+            {/* Stats moved to right side with better spacing */}
+            <motion.div className={styles.statsContainer} variants={itemVariants}>
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  className={styles.statCard}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1 + index * 0.1 }}
+                  style={{ borderColor: stat.color }}
+                >
+                  <div className={styles.statValue} style={{ color: stat.color }}>
+                    {stat.value}
+                  </div>
+                  <div className={styles.statLabel}>{stat.label}</div>
+                </motion.div>
+              ))}
             </motion.div>
           </motion.div>
         </div>

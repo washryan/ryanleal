@@ -39,7 +39,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} data-footer="true">
       <div className={styles.container}>
         <motion.div
           className={styles.content}
@@ -144,7 +144,6 @@ export default function Footer() {
                   }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
                   <social.icon size={20} />

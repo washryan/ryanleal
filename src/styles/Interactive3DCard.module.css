@@ -1,0 +1,29 @@
+.card {
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+}
+
+.content {
+  transform-style: preserve-3d;
+  position: relative;
+  z-index: 2;
+}
+
+.glow {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-radius: inherit;
+  opacity: 0;
+  filter: blur(20px);
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .glow {
+  opacity: 0.3;
+}

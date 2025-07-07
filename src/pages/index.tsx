@@ -1,5 +1,6 @@
 import Layout from "../components/Layout"
 import Hero from "../components/Hero"
+import ParallaxSection from "../components/ParallaxSection"
 import Skills3DCarousel from "../components/Skills3DCarousel"
 import ProjectShowcase from "../components/ProjectShowcase"
 import ExperienceTimeline from "../components/ExperienceTimeline"
@@ -9,10 +10,22 @@ export default function Home() {
   return (
     <Layout>
       <Hero />
-      <Skills3DCarousel id="expertise" />
-      <ProjectShowcase id="projects" />
-      <ExperienceTimeline id="experience" />
-      <ContactSection id="contact" />
+
+      <ParallaxSection speed={0.3}>
+        <Skills3DCarousel id="expertise" />
+      </ParallaxSection>
+
+      <ParallaxSection speed={0.4} direction="down">
+        <ProjectShowcase id="projects" />
+      </ParallaxSection>
+
+      <ParallaxSection speed={0.2}>
+        <ExperienceTimeline id="experience" />
+      </ParallaxSection>
+
+      <ParallaxSection overlay={false}>
+        <ContactSection id="contact" />
+      </ParallaxSection>
     </Layout>
   )
 }

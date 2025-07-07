@@ -5,6 +5,7 @@
   position: relative;
   overflow: hidden;
   background: transparent;
+  padding: 2rem 0;
 }
 
 .container {
@@ -19,7 +20,7 @@
 .content {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
-  gap: 4rem;
+  gap: 6rem;
   align-items: center;
   min-height: 80vh;
 }
@@ -78,38 +79,6 @@
   color: var(--color-muted);
   line-height: 1.7;
   max-width: 500px;
-}
-
-.stats {
-  display: flex;
-  gap: 2rem;
-  margin: 1rem 0;
-}
-
-.statItem {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
-  cursor: pointer;
-  transition: var(--transition-all);
-  backdrop-filter: blur(10px);
-}
-
-.statValue {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-foreground);
-  line-height: 1;
-}
-
-.statLabel {
-  font-size: 0.875rem;
-  color: var(--color-muted);
-  font-family: var(--font-mono);
 }
 
 .ctaButtons {
@@ -187,11 +156,11 @@
   backdrop-filter: blur(10px);
 }
 
-.imageContainer {
-  position: relative;
+.rightContent {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  gap: 2rem;
 }
 
 .imageWrapper {
@@ -234,37 +203,38 @@
   border-radius: calc(2rem - 3px);
 }
 
-.techBadge1,
-.techBadge2,
-.techBadge3 {
-  position: absolute;
+.statsContainer {
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 200px;
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 2rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-foreground);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  transition: var(--transition-all);
   backdrop-filter: blur(10px);
 }
 
-.techBadge1 {
-  top: -10px;
-  right: -30px;
+.statValue {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.5rem;
 }
 
-.techBadge2 {
-  bottom: 25%;
-  left: -40px;
-}
-
-.techBadge3 {
-  top: 30%;
-  right: -50px;
+.statLabel {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  text-align: center;
 }
 
 .scrollIndicator {
@@ -309,19 +279,14 @@
     text-align: center;
   }
 
-  .imageContainer {
+  .rightContent {
     order: -1;
   }
 
-  .stats {
+  .statsContainer {
+    flex-direction: row;
     justify-content: center;
-  }
-
-  .techBadge1,
-  .techBadge2,
-  .techBadge3 {
-    position: relative;
-    margin: 0.5rem;
+    max-width: none;
   }
 }
 
@@ -338,7 +303,7 @@
     font-size: clamp(2.5rem, 10vw, 4rem);
   }
 
-  .stats {
+  .statsContainer {
     flex-direction: column;
     gap: 1rem;
   }

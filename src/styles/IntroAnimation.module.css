@@ -8,94 +8,246 @@
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  background-color: var(--color-background);
+  background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0a0a1a 100%);
+  overflow: hidden;
 }
 
-.content {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.logo {
-  font-family: var(--font-mono);
-  font-size: clamp(2rem, 8vw, 4rem);
-  font-weight: 700;
-  color: var(--color-primary);
-  position: relative;
-}
-
-.glitchText {
-  display: inline-block;
-  position: relative;
-}
-
-.glitchText::before,
-.glitchText::after {
-  content: "<RyanLeal />";
+.backgroundAnimation {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  clip: rect(0, 900px, 0, 0);
-  animation: glitch-anim 2s infinite linear alternate-reverse;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
-.glitchText::before {
-  left: 2px;
-  text-shadow: -1px 0 var(--color-accent);
+.gridPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(rgba(100, 255, 218, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 255, 218, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
 
-.glitchText::after {
-  left: -2px;
-  text-shadow: 2px 0 var(--color-primary);
-  animation-duration: 3s;
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #64ffda;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #64ffda;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.logoSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  font-family: "Fira Code", monospace;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 700;
+  color: #64ffda;
+  position: relative;
+  text-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+}
+
+.logo.glitch {
+  animation: glitch 0.5s ease-in-out;
+}
+
+@keyframes glitch {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+.tagline {
+  font-family: "Fira Code", monospace;
+  font-size: 1.2rem;
+  color: #8892b0;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .terminal {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  text-align: left;
-  background: rgba(10, 25, 47, 0.7);
-  padding: 1.5rem;
-  border-radius: 8px;
-  min-width: 300px;
+  background: rgba(17, 34, 64, 0.9);
+  border: 1px solid rgba(100, 255, 218, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  min-width: 400px;
+}
+
+.terminalHeader {
+  background: rgba(100, 255, 218, 0.1);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+}
+
+.terminalButtons {
+  display: flex;
+  gap: 6px;
+}
+
+.terminalButton {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminalTitle {
+  font-family: "Fira Code", monospace;
+  font-size: 0.875rem;
+  color: #8892b0;
+  margin-left: auto;
+}
+
+.terminalBody {
+  padding: 20px;
+  font-family: "Fira Code", monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  min-height: 200px;
   position: relative;
 }
 
-.terminalLine {
-  margin-bottom: 0.5rem;
+.codeLine {
   display: flex;
   align-items: center;
+  margin-bottom: 4px;
+}
+
+.lineNumber {
+  color: #64ffda;
+  margin-right: 16px;
+  min-width: 20px;
+  text-align: right;
+  opacity: 0.7;
+}
+
+.codeText {
+  color: #ccd6f6;
 }
 
 .cursor {
   display: inline-block;
-  width: 8px;
+  width: 2px;
   height: 16px;
-  background-color: var(--color-primary);
+  background-color: #64ffda;
   margin-left: 4px;
+  vertical-align: text-bottom;
 }
 
-@keyframes glitch-anim {
+.loadingSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+.loadingText {
+  font-family: "Fira Code", monospace;
+  font-size: 0.875rem;
+  color: #8892b0;
+  text-align: center;
+}
+
+.progressBar {
+  width: 100%;
+  height: 4px;
+  background: rgba(100, 255, 218, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #64ffda, #4ecdc4);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+}
+
+.scanLines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(transparent 50%, rgba(100, 255, 218, 0.03) 50%);
+  background-size: 100% 4px;
+  animation: scanlines 0.1s linear infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes scanlines {
   0% {
-    clip: rect(44px, 900px, 56px, 0);
-  }
-  20% {
-    clip: rect(12px, 900px, 65px, 0);
-  }
-  40% {
-    clip: rect(78px, 900px, 82px, 0);
-  }
-  60% {
-    clip: rect(34px, 900px, 49px, 0);
-  }
-  80% {
-    clip: rect(23px, 900px, 61px, 0);
+    transform: translateY(0);
   }
   100% {
-    clip: rect(67px, 900px, 70px, 0);
+    transform: translateY(4px);
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .terminal {
+    min-width: 300px;
+    max-width: 90vw;
+  }
+
+  .terminalBody {
+    padding: 15px;
+    font-size: 0.75rem;
+  }
+
+  .logo {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .tagline {
+    font-size: 1rem;
   }
 }

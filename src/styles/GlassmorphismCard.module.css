@@ -1,0 +1,58 @@
+.card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.05);
+  z-index: 1;
+}
+
+.border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  z-index: 2;
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+}
+
+.light .backdrop {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.medium .backdrop {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.strong .backdrop {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.gradient .backdrop {
+  background: linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(255, 107, 107, 0.05));
+}
+
+.card:hover .border {
+  background: linear-gradient(135deg, rgba(100, 255, 218, 0.4), rgba(255, 107, 107, 0.2));
+}

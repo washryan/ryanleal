@@ -66,6 +66,7 @@ export default function Header() {
     <>
       <motion.header
         className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}
+        data-header="true"
         style={{
           backdropFilter: `blur(${headerBlur}px)`,
           backgroundColor: `rgba(15, 17, 23, ${headerOpacity})`,
@@ -93,7 +94,12 @@ export default function Header() {
         <div className={styles.container}>
           {/* Logo with liquid animation */}
           <Link href="/" className={styles.logo}>
-            <motion.div className={styles.logoContainer} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div
+              className={styles.logoContainer}
+              data-logo="true"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <motion.div
                 className={styles.logoBackground}
                 whileHover={{

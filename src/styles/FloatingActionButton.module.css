@@ -1,0 +1,83 @@
+.container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999; /* Mudado de 1000 para 999 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.actionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.actionButton {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+}
+
+.tooltip {
+  position: absolute;
+  right: 60px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.actionButton:hover .tooltip {
+  opacity: 1;
+}
+
+.mainButton {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 30px rgba(100, 255, 218, 0.4);
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .container {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .mainButton {
+    width: 50px;
+    height: 50px;
+  }
+
+  .actionButton {
+    width: 45px;
+    height: 45px;
+  }
+}
