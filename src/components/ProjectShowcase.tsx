@@ -21,6 +21,46 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: "sistema-gestao-restaurantes",
+    title: "Sistema de Gestão para Restaurantes (Em andamento)",
+    description:
+      'Sistema completo de gestão para restaurantes. O sistema possui funcionalidades como controle de pedidos, inventário, cardápio e painel admininstrativo com gráficos.',
+    image: "/images/sistema-gestao-restaurantes.png",
+    repository: "https://github.com/washryan/sistema-gestao-restaurantes/",
+    tech: [
+      "Java", "Spring Boot", "Spring Security", "JWT", "Spring WebSocket", "Springdoc OpenAPI", "H2 Database", "Maven", "Docker", "React", "TypeScript", "Tailwind CSS", "Recharts", "STOMP.js", "Lucid (Ícones)", "Radix UI",
+    ],
+    color: "#60a5fa",
+    tags: ["Web", "Frontend", "Backend", "fullstack"],
+    type: "frontend",
+  },
+  {
+    id: "roguerl",
+    title: "RogueRL (Em andamento)",
+    description:
+      'Loja de roupas automatizada com Inteligência artifical.',
+    image: "/images/roguerl.png",
+    repository: "https://github.com/washryan/roguerl/",
+    website: "https://www.roguerl.com.br/",
+    tech: ["TypeScript", "Next.js", "React", "Tailwind CSS", "Radix UI", "NextAuth"],
+    color: "#000080",
+    tags: ["Web", "Frontend"],
+    type: "frontend",
+  },
+  {
+    id: "app-financas",
+    title: "Finanças Pessoais (Em andamento)",
+    description:
+      'Site para gerenciamento de Finanças pessoais',
+    image: "/images/app-financas.png",
+    repository: "https://github.com/washryan/app-financas/",
+    website: "https://app-financas-fawn.vercel.app/",
+    tech: ["TypeScript", "Next.js", "React", "Tailwind CSS", "Date-fns", "Supabase Auth"],
+    color: "#000080",
+    tags: ["Web", "Frontend"],
+    type: "frontend",
+  },
+  {
     id: "cafe-aroma",
     title: "Landing Page Cafeteria",
     description:
