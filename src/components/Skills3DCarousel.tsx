@@ -119,6 +119,18 @@ const skills: Skill[] = [
     description: "Pré-processador CSS para melhor organização e variáveis",
     projects: 1,
     experience: "1+ meses",
+  },
+  {
+  id: "grunt",
+  name: "GruntJS",
+  level: 20,
+  icon: faCode,
+  iconType: "fontawesome",
+  color: "#FBA919", // Cor baseada na logo do Grunt
+  category: "tools",
+  description: "Automação de tarefas front-end com pré-processadores, minificação, monitoramento e build.",
+  projects: 1,
+  experience: "1+ meses"
   }
 ]
 
